@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "Layout";
+}
+@model IntroducaoAoMediatR.Models.Produto
+
+<h3>Detalhes do Produto</h3>
+
+<b>@Model.Descricao.ToUpper()</b>
+<br />
+Valor: @Model.Valor.ToString("N2")
+<hr />
+<b>COMPRA</b>
+<form action="/Pedidos/Comprar" method="post">
+    <input type="hidden" name="ProdutoId" value="@Model.Id" />
+    Quantidade: <input type="text" name="Quantidade" value="1" />
+    <input type="submit" name="Comprar" value="Comprar" />
+</form>

@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "Layout";
+}
+@model IEnumerable<IntroducaoAoMediatR.Models.Produto>
+
+<h3>Produtos Disponiveis</h3>
+
+<ul>
+    @foreach (var p in Model)
+    {
+        <li><a href="/Loja/Detalhes?id=@p.Id">@p.Descricao</a></li>
+    }
+</ul>

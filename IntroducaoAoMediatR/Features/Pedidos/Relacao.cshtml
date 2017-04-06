@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "Layout";
+}
+@model IEnumerable<IntroducaoAoMediatR.Models.Pedido>
+
+<h3>Ultimos Pedidos</h3>
+
+<table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Data</td>
+            <td>Valor</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td><a href="#">@p.Id</a></td>
+                <td>@p.Data.ToString("dd/MM/yyyy")</td>
+                <td>@p.Total.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
