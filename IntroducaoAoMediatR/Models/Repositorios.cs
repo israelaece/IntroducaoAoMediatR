@@ -20,7 +20,7 @@ namespace IntroducaoAoMediatR.Models
 
     public interface IRepositorioDePedido : IRepositorio<Pedido>
     {
-        Task<IEnumerable<Pedido>> BuscarUltimosIntroducaoAoMediatR();
+        Task<IEnumerable<Pedido>> BuscarUltimosPedidos();
     }
 
     public interface IRepositorioDeNotasFiscais : IRepositorio<NotaFiscal> { }
@@ -167,9 +167,9 @@ WHERE
             return pedido;
         }
 
-        public async Task<IEnumerable<Pedido>> BuscarUltimosIntroducaoAoMediatR()
+        public async Task<IEnumerable<Pedido>> BuscarUltimosPedidos()
         {
-            var IntroducaoAoMediatR = new List<Pedido>();
+            var pedidos = new List<Pedido>();
 
             using (var cmd = DbExtensions.BuildCommand("SELECT Id, Data, Total FROM Pedido"))
             {
@@ -179,7 +179,7 @@ WHERE
                 {
                     while (dr.Read())
                     {
-                        IntroducaoAoMediatR.Add(new Pedido()
+                        pedidos.Add(new Pedido()
                         {
                             Id = dr.GetGuid(0),
                             Data = dr.GetDateTime(1),
@@ -189,7 +189,7 @@ WHERE
                 }
             }
 
-            return IntroducaoAoMediatR;
+            return pedidos;
         }
     }
 

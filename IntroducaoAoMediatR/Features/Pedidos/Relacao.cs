@@ -9,16 +9,16 @@ namespace IntroducaoAoMediatR.Features
 
     public class RelacaoHandler : IAsyncRequestHandler<Relacao, IEnumerable<Pedido>>
     {
-        private readonly IRepositorioDePedido repositorioDeIntroducaoAoMediatR;
+        private readonly IRepositorioDePedido repositorioDePedidos;
 
-        public RelacaoHandler(IRepositorioDePedido repositorioDeIntroducaoAoMediatR)
+        public RelacaoHandler(IRepositorioDePedido repositorioDePedidos)
         {
-            this.repositorioDeIntroducaoAoMediatR = repositorioDeIntroducaoAoMediatR;
+            this.repositorioDePedidos = repositorioDePedidos;
         }
 
         public async Task<IEnumerable<Pedido>> Handle(Relacao message)
         {
-            return await repositorioDeIntroducaoAoMediatR.BuscarUltimosIntroducaoAoMediatR();
+            return await repositorioDePedidos.BuscarUltimosPedidos();
         }
     }
 }
